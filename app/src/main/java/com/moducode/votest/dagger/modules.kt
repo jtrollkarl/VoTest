@@ -3,6 +3,7 @@ package com.moducode.votest.dagger
 import android.content.Context
 import com.moducode.votest.schedulers.BaseSchedulerProvider
 import com.moducode.votest.schedulers.SchedulerProvider
+import com.moducode.votest.service.RetrofitService
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -25,11 +26,11 @@ class SchedulerModule{
 
 
 @Module(includes = [RetrofitModule::class])
-class WeatherService{
+class WeatherModule{
 
     @Provides
     @Singleton
-    fun provideWeatherService(retrofit: Retrofit): WeatherService = retrofit.create(WeatherService::class.java)
+    fun provideWeatherService(retrofit: Retrofit): RetrofitService = retrofit.create(RetrofitService::class.java)
 
 }
 
