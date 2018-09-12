@@ -1,7 +1,10 @@
 package com.moducode.votest.data
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class WeatherRoot(
         @SerializedName("consolidated_weather") val consolidatedWeather: List<ConsolidatedWeather>,
         @SerializedName("time") val time: String,
@@ -15,4 +18,4 @@ data class WeatherRoot(
         @SerializedName("woeid") val woeid: Int,
         @SerializedName("latt_long") val lattLong: String,
         @SerializedName("timezone") val timezone: String
-)
+): Parcelable
