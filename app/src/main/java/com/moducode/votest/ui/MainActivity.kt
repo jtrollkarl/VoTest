@@ -1,4 +1,4 @@
-package com.moducode.votest
+package com.moducode.votest.ui
 
 
 import android.support.v4.app.Fragment
