@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">VoTest</string>
+    <string name="degrees_c">%1$d°c</string>
+    <string name="error_network">An unexpected network error has occurred</string>
 </resources>

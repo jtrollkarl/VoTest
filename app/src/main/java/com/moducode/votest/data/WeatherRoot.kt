@@ -2,7 +2,9 @@ package com.moducode.votest.data
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import com.moducode.votest.tomorrowDate
 import kotlinx.android.parcel.Parcelize
+
 
 @Parcelize
 data class WeatherRoot(
@@ -18,4 +20,14 @@ data class WeatherRoot(
         @SerializedName("woeid") val woeid: Int,
         @SerializedName("latt_long") val lattLong: String,
         @SerializedName("timezone") val timezone: String
-): Parcelable
+): Parcelable{
+
+    val tomorrowWeather: ConsolidatedWeather?
+    get() {
+        return consolidatedWeather.filter { it.applicableDate == tomorrowDate }.maxBy { it.predictability }
+    }
+
+
+
+
+}

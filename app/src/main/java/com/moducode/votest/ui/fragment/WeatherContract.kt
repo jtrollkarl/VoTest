@@ -8,6 +8,7 @@ interface WeatherContract {
 
     interface View : MvpView {
         fun showForecasts(data: List<WeatherRoot>)
+        fun showError(e: Throwable)
     }
 
     interface Actions : MvpPresenter<View> {

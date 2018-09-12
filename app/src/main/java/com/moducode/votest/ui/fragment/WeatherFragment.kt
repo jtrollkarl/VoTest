@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.hannesdorfmann.mosby3.mvp.viewstate.MvpViewStateFragment
 import com.moducode.votest.App
 import com.moducode.votest.R
@@ -34,7 +35,6 @@ class WeatherFragment: MvpViewStateFragment<WeatherContract.View, WeatherContrac
             addItemDecoration(decoration)
             layoutManager = lm
         }
-
     }
 
     override fun createPresenter(): WeatherContract.Actions = App.get(activity!!).component.buildWeatherPresenter()
@@ -51,4 +51,7 @@ class WeatherFragment: MvpViewStateFragment<WeatherContract.View, WeatherContrac
         weatherAdapter.notifyDataSetChanged()
     }
 
+    override fun showError(e: Throwable) {
+        Toast.makeText(activity, R.string.error_network, Toast.LENGTH_SHORT).show()
+    }
 }

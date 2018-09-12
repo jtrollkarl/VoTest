@@ -22,17 +22,17 @@ class WeatherPresenter @Inject constructor(
                         },
                         { e ->
                             Timber.e(e)
-                            TODO("Implement showing error")
+                            ifViewAttached { it.showError(e) }
                         }
                 )
 
     }
 
-    private fun getSingles(list: List<String>): List<Single<WeatherRoot>> = list.map {
-        weatherService.fetchWOEIDWeather(it)
+    private fun getSingles(list: List<String>): List<Single<WeatherRoot>> = list.map { poeid ->
+        weatherService.fetchWOEIDWeather(poeid)
                 .subscribeOn(schedulers.io())
                 .observeOn(schedulers.ui())
-                .doOnSuccess { result -> Timber.d(result.title) }
+                .doOnSuccess { result -> Timber.d("${result.title} ${result.tomorrowWeather?.weatherStateName} ${result.tomorrowWeather?.applicableDate}")}
     }
 
 }
